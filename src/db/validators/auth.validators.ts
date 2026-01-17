@@ -1,4 +1,5 @@
 import { createSelectSchema } from "drizzle-zod";
+import type { cz } from "../../util/open-api-zod";
 import { users } from "../schema";
 
 export const userSelectSchema = createSelectSchema(users, {
@@ -10,3 +11,5 @@ export const userSelectSchema = createSelectSchema(users, {
 	email: (schema) => schema.openapi({ example: "sabishinekobebe@gmail.com" }),
 	password: (schema) => schema.openapi({ example: "weareboi1892001" }),
 });
+
+export type User = cz.infer<typeof userSelectSchema>;

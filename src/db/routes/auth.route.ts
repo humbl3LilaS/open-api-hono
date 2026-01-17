@@ -10,6 +10,15 @@ auth.get("/", (ctx) => {
 
 auth.openapi(docGetUserById, async (ctx) => {
 	const { id } = ctx.req.valid("param");
-	const data = await getUserById(id);
-	return ctx.json(data);
+	const res = await getUserById(id);
+	if (res.status !== 200) {
+		return ctx.json(
+			{
+				success: false,
+				message: res.message,
+			},
+			res.status,
+		);
+	}
+	return ctx.json({ success: true, data: res.data }, res.status);
 });
