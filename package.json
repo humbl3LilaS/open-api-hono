@@ -7,7 +7,9 @@
 		"db:migrate": "bunx drizzle-kit migrate"
 	},
 	"dependencies": {
+		"@hono/swagger-ui": "^0.5.3",
 		"@hono/zod-openapi": "^1.2.0",
+		"@scalar/hono-api-reference": "^0.9.34",
 		"dotenv": "^17.2.3",
 		"drizzle-orm": "^0.45.1",
 		"drizzle-zod": "^0.8.3",
