@@ -1,8 +1,9 @@
+import { VTUser } from "@valid/auth.validators";
 import { eq } from "drizzle-orm";
-import { db } from "../drizzle";
-import { users } from "../schema";
-import type { VTUser } from "../validators/auth.validators";
+import { db } from "src/db/drizzle";
+import { users } from "src/db/schema";
 
+// TODO: Find a way to absract common response type for all Actions that is compatiable with openapi's create route.
 export const getUserById = async (
 	userid: string,
 ): Promise<
@@ -21,6 +22,7 @@ export const getUserById = async (
 			data,
 		};
 	} catch (_error) {
+		// TODO: How are we going to handle the error higher level or upper level.
 		return {
 			status: 400,
 			message: "Failed to Extract data",

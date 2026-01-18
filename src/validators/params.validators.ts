@@ -1,4 +1,4 @@
-import { cz } from "../../util/open-api-zod";
+import { cz } from "@utils/open-api-zod";
 
 export const uuidParam = cz.object({
 	id: cz.uuid().openapi({

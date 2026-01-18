@@ -1,6 +1,5 @@
+import { docGetUserById } from "@doc/auth.doc";
 import { OpenAPIHono } from "@hono/zod-openapi";
-import { getUserById } from "../actions/auth.actions";
-import { docGetUserById } from "../doc/auth.doc";
 
 export const auth = new OpenAPIHono();
 

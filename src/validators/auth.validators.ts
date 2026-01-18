@@ -1,7 +1,8 @@
 import { createSelectSchema } from "drizzle-zod";
-import type { cz } from "../../util/open-api-zod";
-import { users } from "../schema";
+import { users } from "@db/schema";
+import { cz } from "@utils/open-api-zod";
 
+//TODO: Find a way to add abstraction layer around adding example for openapi.
 export const userSelectSchema = createSelectSchema(users, {
 	id: (schema) =>
 		schema.openapi({ example: "11b0d5bc-0637-4ec4-98f0-9f8654e522ac" }),
@@ -12,4 +13,4 @@ export const userSelectSchema = createSelectSchema(users, {
 	password: (schema) => schema.openapi({ example: "weareboi1892001" }),
 });
 
-export type User = cz.infer<typeof userSelectSchema>;
+export type VTUser = cz.infer<typeof userSelectSchema>;
