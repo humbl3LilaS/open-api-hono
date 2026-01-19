@@ -23,7 +23,7 @@ export const docGetUserById = createRoute({
 					schema: failedResponse,
 				},
 			},
-			description: "Failed Response.",
+			description: "Generic Error Response.",
 		},
 		404: {
 			content: {
@@ -31,7 +31,7 @@ export const docGetUserById = createRoute({
 					schema: failedResponse,
 				},
 			},
-			description: "Failed Response.",
+			description: "User not found.",
 		},
 	},
 });
