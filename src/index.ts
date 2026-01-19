@@ -1,7 +1,7 @@
 import { swaggerUI } from "@hono/swagger-ui";
 import { OpenAPIHono } from "@hono/zod-openapi";
-import { Scalar } from "@scalar/hono-api-reference";
 import { auth } from "@routes/auth.route";
+import { Scalar } from "@scalar/hono-api-reference";
 
 const app = new OpenAPIHono();
 

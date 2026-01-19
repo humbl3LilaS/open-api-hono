@@ -1,19 +1,18 @@
-import { VTUser } from "@valid/auth.validators";
+import { db } from "@db/drizzle";
+import { users } from "@db/schema";
+import type { VTUser } from "@valid/auth.validators";
 import { eq } from "drizzle-orm";
-import { db } from "src/db/drizzle";
-import { users } from "src/db/schema";
+import type { TActionResponse } from "@/types/util.types";
 
 // TODO: Find a way to absract common response type for all Actions that is compatiable with openapi's create route.
 export const getUserById = async (
 	userid: string,
-): Promise<
-	{ status: 200; data: VTUser } | { status: 400; message: string }
-> => {
+): Promise<TActionResponse<VTUser, 200 | 404 | 400>> => {
 	try {
 		const [data] = await db.select().from(users).where(eq(users.id, userid));
 		if (!data) {
 			return {
-				status: 400,
+				status: 404,
 				message: "User Not Found",
 			};
 		}

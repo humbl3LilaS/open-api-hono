@@ -25,5 +25,13 @@ export const docGetUserById = createRoute({
 			},
 			description: "Failed Response.",
 		},
+		404: {
+			content: {
+				"application/json": {
+					schema: failedResponse,
+				},
+			},
+			description: "Failed Response.",
+		},
 	},
 });
