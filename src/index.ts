@@ -1,4 +1,4 @@
-import { auth } from "@routes/auth.route";
+import auth from "@routes/sso/sso.index";
 import createApp from "@utils/create-app";
 import { configureOpenApi } from "@utils/open-api";
 

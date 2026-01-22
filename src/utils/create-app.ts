@@ -4,7 +4,20 @@ import { HTTPStatus } from "@/types/util.types";
 import { cPinoLogger } from "./pino-logger";
 
 export const createRouter = () => {
-  return new OpenAPIHono<AppBinding>();
+  return new OpenAPIHono<AppBinding>({ defaultHook: (result, c) => {
+    if (!result.success) {
+      return c.json(
+        {
+          success: result.success,
+          error: {
+            name: result.error.name,
+            issues: result.error.issues,
+          },
+        },
+        422,
+      );
+    }
+  } });
 };
 
 const createApp = () => {

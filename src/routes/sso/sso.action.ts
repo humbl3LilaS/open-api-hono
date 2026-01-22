@@ -8,6 +8,7 @@ import { HTTPStatus } from "@/types/util.types";
 // TODO: Find a way to absract common response type for all Actions that is compatiable with openapi's create route.
 export const getUserById = async (userid: string): Promise<TActionResponse<VTUser, 200 | 404 | 400>> => {
   try {
+    console.log("hell0");
     const [data] = await db.select().from(users).where(eq(users.id, userid));
     if (!data) {
       return {

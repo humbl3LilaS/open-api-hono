@@ -2,14 +2,15 @@ import { createRoute } from "@hono/zod-openapi";
 import { createSuccessResponse, failedResponse } from "@utils/open-api";
 import { userSelectSchema } from "@valid/auth.validators";
 import { uuidParam } from "@valid/params.validators";
+import { HTTPStatus } from "@/types/util.types";
 
-// TODO: Find a way to abstract createRoute function for DRY approach
 export const docGetUserById = createRoute({
+  tags: ["SSO"],
   method: "get",
   path: "/{id}",
   request: { params: uuidParam },
   responses: {
-    200: {
+    [HTTPStatus.OK]: {
       content: {
         "application/json": {
           schema: createSuccessResponse(userSelectSchema),

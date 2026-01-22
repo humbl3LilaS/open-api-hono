@@ -1,12 +1,8 @@
-import { getUserById } from "@actions/auth.actions";
-import { docGetUserById } from "@doc/auth.doc";
-import { OpenAPIHono } from "@hono/zod-openapi";
+import { createRouter } from "@utils/create-app";
+import { getUserById } from "./sso.action";
+import { docGetUserById } from "./sso.route";
 
-export const auth = new OpenAPIHono();
-
-auth.get("/", (ctx) => {
-  return ctx.json({ success: true });
-});
+const auth = createRouter();
 
 auth.openapi(docGetUserById, async (ctx) => {
   const { id } = ctx.req.valid("param");
@@ -22,3 +18,5 @@ auth.openapi(docGetUserById, async (ctx) => {
   }
   return ctx.json({ success: true, data: res.data }, res.status);
 });
+
+export default auth;

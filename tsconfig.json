@@ -12,9 +12,9 @@
       "@actions/*": ["./src/actions/*"],
       "@/*": ["./src/*"]
     },
+    "resolveJsonModule": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true
+    "esModuleInterop": true
   }
 }
