@@ -20,5 +20,8 @@ export default antfu({
       case: "kebabCase",
       ignore: ["^.*\.md$"],
     }],
+    "unused-imports/no-unused-vars": ["error", {
+      caughtErrorsIgnorePattern: "^_",
+    }],
   },
 });

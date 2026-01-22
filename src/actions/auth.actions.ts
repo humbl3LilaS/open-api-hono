@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm";
 import { HTTPStatus } from "@/types/util.types";
 
 // TODO: Find a way to absract common response type for all Actions that is compatiable with openapi's create route.
-export async function getUserById(userid: string): Promise<TActionResponse<VTUser, 200 | 404 | 400>> {
+export const getUserById = async (userid: string): Promise<TActionResponse<VTUser, 200 | 404 | 400>> => {
   try {
     const [data] = await db.select().from(users).where(eq(users.id, userid));
     if (!data) {
@@ -27,4 +27,4 @@ export async function getUserById(userid: string): Promise<TActionResponse<VTUse
       message: "Failed to Extract data",
     };
   }
-}
+};
