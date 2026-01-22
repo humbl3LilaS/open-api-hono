@@ -12,6 +12,8 @@
       "@actions/*": ["./src/actions/*"],
       "@/*": ["./src/*"]
     },
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }
