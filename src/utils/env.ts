@@ -1,3 +1,4 @@
+import type { ZodError } from "zod";
 import { config } from "dotenv";
 import { expand } from "dotenv-expand";
 import { z } from "zod";
@@ -10,7 +11,19 @@ const EnvSchema = z.object({
   DATABASE_URL: z.string(),
 });
 
+type TEnv = z.infer<typeof EnvSchema>;
+
+// eslint-disable-next-line import/no-mutable-exports
+let env: TEnv;
+
+try {
 // eslint-disable-next-line node/prefer-global/process
-const env = EnvSchema.parse(process.env);
+  env = EnvSchema.parse(process.env);
+}
+catch (e) {
+  const error = e as ZodError;
+  console.error("Error Parsing Invalid Env Variables:");
+  console.error(error.format());
+}
 
 export default env;

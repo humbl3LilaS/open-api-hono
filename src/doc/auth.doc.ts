@@ -1,5 +1,5 @@
 import { createRoute } from "@hono/zod-openapi";
-import { createSuccessResponse, failedResponse } from "@utils/open-api-helpers";
+import { createSuccessResponse, failedResponse } from "@utils/open-api";
 import { userSelectSchema } from "@valid/auth.validators";
 import { uuidParam } from "@valid/params.validators";
 
